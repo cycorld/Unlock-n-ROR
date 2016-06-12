@@ -1,6 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/cycorld/Unlock-n-ROR.png?label=ready&title=Ready)](http://waffle.io/cycorld/Unlock-n-ROR)
 
-# 루비온레일즈 질문/답변 서비스 : **Unlock'n RoR**
+# RoR Lab을 위한 루비온레일즈 질문/답변 서비스 : **Unlock'n RoR**
 
 ## Unlock'n RoR
 **Unlock'n RoR**의 이름은 해결하다라는 의미의 **"Unlock"**과 루비온레일즈의 약자인 **"RoR"** 에다가 작명자의 락큰롤 사랑이 더해져 **Unlock'n RoR**이 만들어졌습니다.
@@ -10,7 +10,8 @@
 
 ## 기능 소개
 개발자들 위주의 서비스이기 때문에 Devise gem을 이용한 Github/Facebook/Twitter 로그인과
-질문을 게시하고 질문의 업다운을 구현할 것입니다. 그리고 질문에 대한 답변과 답변의 업다운도 마찬가지입니다. 마크다운 파서/편집기
+질문을 게시하고 질문의 업(like)/다운(dislike)을 구현할 것입니다. 그리고 질문에 대한 답변과 답변의 업/다운도 마찬가지입니다.
+마크다운 파서/편집기를 붙이고 이미지 업로드 기능을 붙일 예정입니다.
 질문 등록시 슬랙 채널에 봇 푸쉬 알림을 보냄으로써 신속정확한 답변을 얻을  수 있습니다.
 그리고 답변 등록시 질문자에게 이메일 알림을 보내서 빠르게 확인을 시켜줄 수 있습니다.
 Stackoverflow에도 있듯이 채택 시 포인트 지급해서 포인트로 랭킹을 지어줄 예정입니다.
