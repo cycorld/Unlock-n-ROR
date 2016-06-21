@@ -78,3 +78,6 @@ $ rails s
 
 - [Devise에 oauth 적용하기](https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview)
 
+### Mockups
+
+- [목업](https://ovenapp.io/project/25ZTYmFFHY8mJ4lsUqSAse8q406Q3WAj#GSgsM)
