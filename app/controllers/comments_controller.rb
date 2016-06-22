@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  /*
   def index
   end
 
@@ -19,4 +20,5 @@ class CommentsController < ApplicationController
 
   def destroy
   end
+*/
 end
