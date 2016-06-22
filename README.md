@@ -11,7 +11,7 @@
 
 하지만 Stackoverflow는 영어기반 서비스라서 영어가 약하거나 레일즈에 관한 용어를 모른다면 보기가 힘듭니다.
 
-그리고 Hashcode라는 유사 서비스가 있습니다. 하지만 Unlock'n RoR 서비스는 루비온레일즈에 대해서 좀 더 자세히 다룰 것입니다. 
+그리고 Hashcode라는 유사 서비스가 있습니다. 하지만 Unlock'n RoR 서비스는 루비온레일즈에 대해서 좀 더 자세히 다룰 것입니다.
 
 만약 사용자가 질문을 올렸다면 RORLAB 슬랙에 봇을 이용해 알림이 가게끔 만들어서 질문에 대한 답변을 최대한 신속하고 정확하게 알 수 있도록 할 예정입니다.
 
@@ -39,3 +39,45 @@ Stackoverflow에도 있듯이 채택 시 포인트 지급해서 포인트로 랭
 Slack의 채널을 이용해서 대화하고, Git&Github를 이용한 소스코드 관리를 합니다.
 
 그리고 Waffle을 이용해서 Issue들을 관리합니다.
+
+## Versions
+
+- Ruby 2.3.0
+- Rails 5.0.0.rc1
+
+## Getting Started
+
+### Install Rails 5 (rc1)
+
+```
+$ gem install rails --pre
+```
+
+### Run in development
+
+```
+$ git clone https://github.com/cycorld/Unlock-n-ROR.git
+$ cd Unlock-n-ROR
+$ bundle install
+$ rails s
+```
+
+### Gems used
+
+- [devise](https://github.com/plataformatec/devise)
+- [omniauth-github](https://github.com/intridea/omniauth-github)
+- [omniauth-facebook](https://github.com/mkdynamic/omniauth-facebook)
+- [omniauth-twitter](https://github.com/arunagw/omniauth-twitter)
+- [ckeditor](https://github.com/galetahub/ckeditor)
+- [acts_as_votable](https://github.com/ryanto/acts_as_votable)
+- [acts_as_taggable](https://github.com/mbleigh/acts-as-taggable-on)
+- [will_paginate](https://github.com/mislav/will_paginate)
+- [rails_admin](https://github.com/sferik/rails_admin)
+
+### References
+
+- [Devise에 oauth 적용하기](https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview)
+
+### Mockups
+
+- [목업](https://ovenapp.io/project/25ZTYmFFHY8mJ4lsUqSAse8q406Q3WAj#GSgsM)
