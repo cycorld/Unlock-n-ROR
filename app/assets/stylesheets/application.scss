@@ -15,12 +15,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 /* header */
 #logo {
     float: left;
-    margin-top: auto;
-    margin-bottom: auto;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
     font-size: 2em;
     height: 2em;
 }
@@ -29,5 +29,35 @@
 body {
      padding-top: 60px;
 }
+
+hr {
+    width: 100%;
+    border: 1px solid #DDD;
+    margin: 0px;
+    
+    display: block;
+}
+
+form {
+    width: 80%;
+    margin: auto;
+}
+
+#questions > div {
+    height: 30px;
+}
+
+.question > div {
+    display: flex;
+    align-items: center;
+}
+
+textarea,
+input[name="question[content]"],
+input[name="question[title]"],
+input[name="question[tag_list]"] {
+    width: 100%;
+}
+
 
 /* footer */

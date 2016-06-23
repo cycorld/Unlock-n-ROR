@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-/*  before_action :authenticate_user!, only: [:new, :edit, :destroy, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update]
   before_action :set_question, only: [:edit, :show, :destroy, :update]  
 
   def index
@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:title, :description, :tag_list)
+      params.require(:question).permit(:title, :content, :tag_list)
     end
-*/
+
 end
