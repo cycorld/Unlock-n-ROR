@@ -59,5 +59,29 @@ input[name="question[tag_list]"] {
     width: 100%;
 }
 
-
 /* footer */
+
+footer {
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid #eaeaea;
+
+    a {
+	padding-right: 10px;
+    }
+    
+    .category, #copyright {
+	padding-top: 5px;
+	text-align: center;
+	span {
+	    margin-top: 10px;
+	}
+    }
+
+    
+    li {
+	text-align: left;
+	display: block;
+    }
+	
+}

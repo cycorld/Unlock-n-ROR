@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update]
-  before_action :set_question, only: [:edit, :show, :destroy, :update]  
+  before_action :set_question, only: [:edit, :show, :destroy, :update]
+  before_action :verify_user, only: [:edit, :destroy, :update]
 
   def index
     @questions = Question.all
@@ -46,4 +47,7 @@ class QuestionsController < ApplicationController
       params.require(:question).permit(:title, :content, :tag_list)
     end
 
+    def verify_user
+      redirect_to @question unless @question.user_id == current_user.id 
+    end
 end
