@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.3.0
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: pW4ympA+n8Xz+RBxjbXkGiX8Sj0IVxrUk8dYOES/ojC7srudulgP/hjbpD/zps5b4PNs7fjMGQeKxaqabT+vlK8zK4YSNqgja7LVf6ZI0DcyFXeC94N7h4JHGSetw89NY+dLPXBaSuJwYOQAqG7EB0N+2ngPlAckOgmHcmIoydqRqqfX4z2rg5qR0jedKWjCT8VZpfyYtQLdWsMqI0qFQRJcfHEz4IvU79zvjWsuBR1NQk4G3Devpw39p/shtstvC0aVwY//odZ1LrHOe+QRqNIrPN9/phVyjI0Aih6iJAFyDzPYuAKmJn7fGkH01ML8WWMw//7zv0SUjANt0adGpyGLm+uJ/F3L3OforADZjnwrZZ1zJma3JYcc2i8v3AkLjSPjmbhKiYNdU4qtpy4BvdxO7xfYnnvdZ2ohBMr2l96V51yXdCZhJzBZMan30200p9zRTC8T41z+KBVCKG3VDaYAGysdcmg1iifA+vRGJivYi/EeCRmDNyO2NiBfCuIZcsSCck17IrDkeLrg78LC/VkvxociVfcvoBGQyNSrfZLwwuERNDAR0FPto9fXazkUQ4dLMAMPyB/Lp0yeJul7VEl7141KjI+eBLMdPRMtJmT7ZEegiBq1/cPVsPPNSw2gtYlW3igTAqnMB40FiF44Fdy8ZEBA2CZKS5BnzQpMf3E=
+  app: unlock-n-ror
+  on:
+    repo: cycorld/Unlock-n-ROR
+    branch: master
+  run: "rake db:migrate"
