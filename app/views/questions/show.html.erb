@@ -1,3 +1,16 @@
 <h1><%= @question.title %></h1>
-<p><%= @question.content %></p>
+<p><%= @question.content.html_safe %></p>
+
+<% if !current_user.nil? && current_user.id == @question.user_id %>
+  <%= link_to "edit", edit_question_path(@question) %>
+  <%= link_to "delete", "/questions/#{@question.id}", :method => :delete %>
+<% end %>
+
+
+<%= render "answers/form" unless current_user.nil? %>
+
+<%= render @question.answers %>
+
+
+<%= link_to "back", '/questions' %>
  

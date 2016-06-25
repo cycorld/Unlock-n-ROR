@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # Default static pages for giving information
   get '/about', to: 'static_pages#about'
   get '/help',  to: 'static_pages#help'
-
+  root 'questions#index'
+  
   authenticate :user do
     resources :questions, only: [:new, :create, :edit, :update, :destroy]
   end

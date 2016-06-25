@@ -1,9 +1,9 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <b><%= link_to "Unlock'n ROR", about_path, id: "logo" %></b>
+    <b><%= link_to "Unlock'n ROR", root_path, id: "logo" %></b>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-	<li><%= link_to "Home",   about_path %></li>
+	<li><%= link_to "Home",   root_path %></li>
 	<li><%= link_to "Help",   help_path %></li>
 	<% if current_user %>
 	  <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>

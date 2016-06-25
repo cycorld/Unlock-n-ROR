@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update]
-  before_action :set_question, only: [:edit, :show, :destroy, :update]
+  before_action :set_question, only: [:edit, :show, :update, :destroy]
   before_action :verify_user, only: [:edit, :destroy, :update]
 
   def index
@@ -13,6 +13,8 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.user_id = current_user.id
+    
     if @question.save
       redirect_to @question
     else
@@ -24,17 +26,18 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @answer = @question.answers.build
   end
 
   def update
-    if @question.update
+    if @question.update(question_params)
       redirect_to @question
     else
       render :edit
     end
   end
 
-  def detroy
+  def destroy
     @question.destroy
   end
 
