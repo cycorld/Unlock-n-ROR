@@ -3,7 +3,7 @@ gem 'devise'
 
 gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
-gem 'ckeditor'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'will_paginate'
 
 gem 'rails', '>= 5.0.0.rc1', '< 5.1'
@@ -65,5 +65,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'pg', '~> 0.18'
   gem 'rails_12factor'
-  gem 'therubyracer-heroku'
 end
