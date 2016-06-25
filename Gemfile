@@ -3,7 +3,7 @@ gem 'devise'
 
 gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
-gem 'ckeditor'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'will_paginate'
 
 gem 'rails', '>= 5.0.0.rc1', '< 5.1'
