@@ -81,3 +81,10 @@ $ rails s
 ### Mockups
 
 - [목업](https://ovenapp.io/project/25ZTYmFFHY8mJ4lsUqSAse8q406Q3WAj#GSgsM)
+
+### 브랜치 전략 : pull request 방식으로 진행 - 전원 코드리뷰
+
+- master : heroku에 staging 하는 브랜치
+- development : pull request를 받는 브랜치
+- (production) : AWS에 배포하는 브랜치
+- 각각의 이슈별 브랜치는 알아서 하는 걸로 (feature, hotfix 등등)
