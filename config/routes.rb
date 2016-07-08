@@ -11,7 +11,16 @@ Rails.application.routes.draw do
   end
   
   resources :questions, only: [:index, :show] do
-    resources :answers
+    member do
+      put "like", to: "questions#upvote"
+      put "dislike", to: "questions#downvote"
+    end
+    resources :answers do
+      member do
+        put "like", to: "answers#upvote"
+        put "dislike", to: "answers#downvote"
+      end
+    end
   end
   
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords' },
