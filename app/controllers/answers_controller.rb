@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
-  before_action :set_answer, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :upvote, :downvote]
+  before_action :set_answer, only: [:edit, :update, :destroy, :upvote, :downvote]
   before_action :verify_user, only: [:edit, :update, :destroy]
 
   def create
@@ -33,6 +33,16 @@ class AnswersController < ApplicationController
     redirect_to @question
   end
 
+  def upvote
+    @answer.upvote_by current_user
+    redirect_to @question
+  end
+
+  def downvote
+    @answer.downvote_by current_user
+    redirect_to @question
+  end
+  
   private
     def set_answer
       @question = Question.find(params[:question_id])

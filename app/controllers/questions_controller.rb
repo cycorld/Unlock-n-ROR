@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update]
-  before_action :set_question, only: [:edit, :show, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update, :upvote, :downvote]
+  before_action :set_question, only: [:edit, :show, :update, :destroy, :upvote, :downvote]
   before_action :verify_user, only: [:edit, :destroy, :update]
 
   def index
@@ -42,6 +42,18 @@ class QuestionsController < ApplicationController
     redirect_to root_path
   end
 
+
+  def upvote
+    @question.upvote_by current_user
+    redirect_to @question
+  end
+
+  def downvote
+    @question.downvote_by current_user
+    redirect_to @question
+  end
+
+  
   private
     def set_question
       @question = Question.find(params[:id])

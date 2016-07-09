@@ -1,6 +1,6 @@
 <div class="question">
-  <div class="col-md-1"><%= question.votes_for.count %></div>
-  <div class="col-md-1"><%= question.answers.count %></div>
+  <div class="col-md-1"><%= question.get_upvotes.size - question.get_downvotes.size %><br>votes</div>
+  <div class="col-md-1"><%= question.answers.count %><br>answers</div>
   <div class="col-md-1">views</div>
   <div class="col-md-9"><%= link_to question.title, question %></div>
 </div>
