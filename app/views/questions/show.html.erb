@@ -1,10 +1,25 @@
 <h1><%= @question.title %></h1>
 <p><%= @question.content.html_safe %></p>
 
-<% if !current_user.nil? && current_user.id == @question.user_id %>
-  <%= link_to "edit", edit_question_path(@question) %>
-  <%= link_to "delete", "/questions/#{@question.id}", :method => :delete %>
+<%= render @question.comments %>
+
+<%= link_to "Add comment", new_question_comment_path(@question) unless current_user.nil? %>
+
+<%=link_to like_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+  <span class="glyphicon glyphicon-chevron-up"></span>
+  like <%=@question.get_upvotes.size%></td>
 <% end %>
+<%=link_to dislike_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+  <span class="glyphicon glyphicon-chevron-down"></span>
+  dislike <%=@question.get_downvotes.size%></td>
+<% end %>
+
+<div>
+  <% if !current_user.nil? && current_user.id == @question.user_id %>
+    <%= link_to "edit", edit_question_path(@question) %>
+    <%= link_to "delete", "/questions/#{@question.id}", :method => :delete %>
+  <% end %>
+</div>
 
 
 <%= render "answers/form" unless current_user.nil? %>

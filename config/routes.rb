@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  get 'comments/create'
+
+  get 'comments/update'
+
+  get 'comments/destroy'
+
   # Default static pages for giving information
   get '/about', to: 'static_pages#about'
   get '/help',  to: 'static_pages#help'
@@ -11,7 +17,18 @@ Rails.application.routes.draw do
   end
   
   resources :questions, only: [:index, :show] do
-    resources :answers
+    resources :comments
+    member do
+      put "like", to: "questions#upvote"
+      put "dislike", to: "questions#downvote"
+    end
+    resources :answers do
+      resources :comments
+      member do
+        put "like", to: "answers#upvote"
+        put "dislike", to: "answers#downvote"
+      end
+    end
   end
   
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords' },
