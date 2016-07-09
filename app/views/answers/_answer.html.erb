@@ -2,6 +2,9 @@
   <% unless answer.content.blank? %>
     <%= answer.content.html_safe %>
 
+    <%= render answer.comments %>
+    <%= link_to "Add comment", new_question_answer_comment_path(answer.question, answer) unless current_user.nil? %>
+
     <%=link_to like_question_answer_path(answer), method: :put, class: 'btn btn-default btn-sm' do %>
       <span class="glyphicon glyphicon-chevron-up"></span>
       like <%= answer.get_upvotes.size%></td>

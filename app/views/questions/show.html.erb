@@ -1,6 +1,9 @@
 <h1><%= @question.title %></h1>
 <p><%= @question.content.html_safe %></p>
 
+<%= render @question.comments %>
+
+<%= link_to "Add comment", new_question_comment_path(@question) unless current_user.nil? %>
 
 <%=link_to like_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
   <span class="glyphicon glyphicon-chevron-up"></span>
