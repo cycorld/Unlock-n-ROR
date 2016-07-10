@@ -23,12 +23,15 @@ Rails.application.routes.draw do
       put "dislike", to: "questions#downvote"
     end
     resources :answers do
-      resources :comments
       member do
         put "like", to: "answers#upvote"
         put "dislike", to: "answers#downvote"
       end
     end
+  end
+
+  resources :answers do
+    resources :comments
   end
   
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords' },

@@ -27,6 +27,9 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = @question.answers.build
+
+    @commentable = @question
+    @comment = Comment.new
   end
 
   def update
