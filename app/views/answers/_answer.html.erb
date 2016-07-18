@@ -1,6 +1,6 @@
 <div>
   <% unless answer.content.blank? %>
-    <%= answer.content.html_safe %>
+    <%= Markdown.new(answer.content).to_html.html_safe %>
 
     <%= render answer.comments %>
 
