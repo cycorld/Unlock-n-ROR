@@ -4,7 +4,6 @@ gem 'devise'
 gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
 
-gem 'simplemde-rails'
 gem 'markdown'
 
 gem 'will_paginate'
