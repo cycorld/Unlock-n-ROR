@@ -1,5 +1,8 @@
+<script>
+  var simplemde = new SimpleMDE( {element: $('textarea')[0]} );
+</script>
 <%= form_for [@question, @answer] do |f| %>
-  <%= f.cktext_area :content, :value => @answer.content %>
+  <%= f.text_area :content, :value => @answer.content %>
 
   <%= f.submit %>
 <% end %>

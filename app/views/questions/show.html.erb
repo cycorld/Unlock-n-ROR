@@ -1,5 +1,5 @@
 <h1><%= @question.title %></h1>
-<p><%= @question.content.html_safe %></p>
+<p><%= Markdown.new(@question.content).to_html.html_safe %></p>
 
 
 <%= render @question.comments %>
