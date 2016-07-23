@@ -6,6 +6,16 @@
 
 <%= render partial: "comments/form", locals: {commentable: @question} %>
 
+<% unless @question.is_favorited_by current_user %>
+  <%= link_to favorite_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+  favorite
+  <% end %>
+<% else %>
+  <%= link_to unfavorite_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+  unfavorite
+  <% end %>
+<% end %>
+
 <!--
 <%= link_to "Add comment", new_question_comment_path(@question) unless current_user.nil? %>
 -->
