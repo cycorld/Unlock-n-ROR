@@ -1,9 +1,21 @@
 source 'https://rubygems.org'
+
 gem 'devise'
+
+# Gems for authentication 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+
+# Gem for manage environment variables
+gem 'figaro'
 
 gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
-gem 'ckeditor', github: 'galetahub/ckeditor'
+
+gem 'markdown'
+
 gem 'will_paginate'
 
 gem 'rails', '>= 5.0.0.rc1', '< 5.1'

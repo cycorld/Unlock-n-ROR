@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update, :upvote, :downvote]
-  before_action :set_question, only: [:edit, :show, :update, :destroy, :upvote, :downvote]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update, :upvote, :downvote, :favorite, :unfavorite]
+  before_action :set_question, only: [:edit, :show, :update, :destroy, :upvote, :downvote, :favorite, :unfavorite]
   before_action :verify_user, only: [:edit, :destroy, :update]
 
   def index
@@ -27,6 +27,9 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = @question.answers.build
+
+    @commentable = @question
+    @comment = Comment.new
   end
 
   def update
@@ -42,6 +45,15 @@ class QuestionsController < ApplicationController
     redirect_to root_path
   end
 
+  def favorite
+    @question.favorited_by current_user
+    redirect_to @question
+  end
+
+  def unfavorite
+    @question.unfavorited_by current_user
+    redirect_to @question
+  end
 
   def upvote
     @question.upvote_by current_user

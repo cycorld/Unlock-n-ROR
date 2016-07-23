@@ -1,9 +1,24 @@
 <h1><%= @question.title %></h1>
-<p><%= @question.content.html_safe %></p>
+<p><%= Markdown.new(@question.content).to_html.html_safe %></p>
+
 
 <%= render @question.comments %>
 
+<%= render partial: "comments/form", locals: {commentable: @question} %>
+
+<% unless @question.is_favorited_by current_user %>
+  <%= link_to favorite_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+  favorite
+  <% end %>
+<% else %>
+  <%= link_to unfavorite_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+  unfavorite
+  <% end %>
+<% end %>
+
+<!--
 <%= link_to "Add comment", new_question_comment_path(@question) unless current_user.nil? %>
+-->
 
 <%=link_to like_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
   <span class="glyphicon glyphicon-chevron-up"></span>

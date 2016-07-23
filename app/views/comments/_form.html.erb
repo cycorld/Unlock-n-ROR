@@ -1,6 +1,5 @@
-<%= form_for [@commentable, @comment], :url => {:controller => 'comments'} do |f| %>
-  <%= f.text_field :content %>
-
+  <%= form_for [commentable, commentable.comments.build] do |f| %>
+    <%= f.text_field :content %>
   
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+  <% end %>
