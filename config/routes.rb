@@ -2,11 +2,12 @@ Rails.application.routes.draw do
 
 
   get 'comments/create'
-
   get 'comments/update'
-
   get 'comments/destroy'
 
+  resources :chatrooms, only: [:new, :create, :show, :index]
+  mount ActionCable.server => '/cable'
+  
   # Default static pages for giving information
   get '/about', to: 'static_pages#about'
   get '/help',  to: 'static_pages#help'

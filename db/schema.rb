@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723182808) do
+ActiveRecord::Schema.define(version: 20160726095337) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20160723182808) do
     t.datetime "updated_at",  null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -58,6 +67,16 @@ ActiveRecord::Schema.define(version: 20160723182808) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["user_id"], name: "index_identities_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "chatroom_id"
+    t.string   "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|

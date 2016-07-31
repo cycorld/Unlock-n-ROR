@@ -9,7 +9,11 @@ class AnswersController < ApplicationController
     @answer.question_id = params[:question_id]
     @answer.user_id = current_user.id
 
-    @answer.save
+    if @answer.save
+      UserMailer.answer_notification(@answer, ) if Rails.env.production?
+    else
+
+    end
 
     redirect_to "/questions/#{params[:question_id]}"
   end
