@@ -98,3 +98,10 @@ footer {
     margin-top: 45px;
     @include box_sizing;;
 }
+
+
+/* messages */
+#messages {
+    max-height: 450px;
+    overflow-y: auto;
+}

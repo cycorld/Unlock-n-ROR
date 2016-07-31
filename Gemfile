@@ -11,9 +11,11 @@ gem 'omniauth-github'
 # Gem for manage environment variables
 gem 'figaro'
 
+# Gems for Tagging, Voting
 gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
 
+# Gem for parsing markdown
 gem 'markdown'
 
 gem 'will_paginate'
@@ -26,6 +28,9 @@ gem 'puma', '~> 3.0'
 # Use SCSS/Bootstrap for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
+
+# Use Coffee script for Action cable
+gem 'coffee-script'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -41,7 +46,11 @@ gem 'turbolinks', '~> 5.x'
 gem 'jbuilder', '~> 2.0'
 
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'
+
+# Use Mail for notify users
+gem 'mail'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -77,4 +86,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'pg', '~> 0.18'
   gem 'rails_12factor'
+  gem 'mailgun_rails'
 end

@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :questions
   has_many :identities
   has_many :favorites
+  has_many :chatrooms
+  has_many :messages
   
   acts_as_voter
 
