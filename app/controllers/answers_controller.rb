@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :upvote, :downvote]
-  before_action :set_answer, only: [:edit, :update, :destroy, :upvote, :downvote]
+  before_action :authenticate_user!, only: [:create, :upvote, :downvote, :accept, :unaccept]
+  before_action :set_answer, only: [:edit, :update, :destroy, :upvote, :downvote, :accept, :unaccept]
   before_action :verify_user, only: [:edit, :update, :destroy]
 
   def create
@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
 
     if @answer.save
-      UserMailer.answer_notification(@answer, ) if Rails.env.production?
+    
     else
 
     end
@@ -44,6 +44,16 @@ class AnswersController < ApplicationController
 
   def downvote
     @answer.downvote_by current_user
+    redirect_to @question
+  end
+
+  def accept
+    @answer.accepted_by current_user
+    redirect_to @question
+  end
+
+  def unaccept
+    @answer.unaccepted_by current_user
     redirect_to @question
   end
   

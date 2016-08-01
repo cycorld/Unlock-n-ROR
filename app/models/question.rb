@@ -4,10 +4,12 @@ class Question < ApplicationRecord
     
   belongs_to :user
   
-  has_many :answers
-  has_many :comments, as: :commentable
-  has_many :favorites
+  has_many :answers, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
+  has_one :acceptation
+  
   def favorited_by(user)
     @favorite = Favorite.new(user_id: user.id, question_id: id)
     @favorite.save

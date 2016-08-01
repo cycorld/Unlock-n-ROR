@@ -31,6 +31,10 @@ class QuestionsController < ApplicationController
 
     @commentable = @question
     @comment = Comment.new
+
+    @accepted_id =
+      (acceptation = Acceptation.find_by(question_id: @question.id)).present? \
+      ? acceptation.answer_id : nil 
   end
 
   def update
