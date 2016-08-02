@@ -3,11 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :comments
   has_many :answers
-  has_many :questions
-  has_many :identities
+  has_many :questions, dependent: :destroy
+  has_many :identities, dependent: :destroy
   has_many :favorites
   has_many :chatrooms
   has_many :messages
+  has_many :scores
   
   acts_as_voter
 
@@ -50,6 +51,15 @@ class User < ApplicationRecord
 
   def email_required?
     true
+  end
+
+  def accepted_answers
+    scores.select {|x| x.scorable_type == "Acceptation" }.map do |y|
+      {
+        question: (a=Acceptation.find y.scorable_id).question,
+        content: a.answer.content
+      }
+    end
   end
   
   devise :omniauthable, :database_authenticatable, :registerable,

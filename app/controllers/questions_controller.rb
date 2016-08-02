@@ -16,7 +16,6 @@ class QuestionsController < ApplicationController
     @question.user_id = current_user.id
 
     if @question.save
-      SlackBot.push(@question) if Rails.env.production?
       redirect_to @question
     else
       render :new
@@ -31,6 +30,10 @@ class QuestionsController < ApplicationController
 
     @commentable = @question
     @comment = Comment.new
+
+    @accepted_id =
+      (acceptation = Acceptation.find_by(question_id: @question.id)).present? \
+      ? acceptation.answer_id : nil 
   end
 
   def update

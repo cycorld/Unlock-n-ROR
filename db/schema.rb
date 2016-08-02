@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726095337) do
+ActiveRecord::Schema.define(version: 20160731192715) do
+
+  create_table "acceptations", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["answer_id"], name: "index_acceptations_on_answer_id"
+    t.index ["question_id"], name: "index_acceptations_on_question_id"
+  end
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -86,6 +95,16 @@ ActiveRecord::Schema.define(version: 20160726095337) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "scorable_type"
+    t.integer  "scorable_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["scorable_type", "scorable_id"], name: "index_scores_on_scorable_type_and_scorable_id"
+    t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  scorable: one
+  scorable_type: Scorable
+
+two:
+  user: two
+  scorable: two
+  scorable_type: Scorable

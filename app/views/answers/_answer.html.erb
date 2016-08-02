@@ -1,7 +1,24 @@
 <div>
   <% unless answer.content.blank? %>
+    <% if is_accepted = answer.id == @accepted_id %>
+      <p>Accepted!</p>
+    <% end %>
+  
     <%= Markdown.new(answer.content).to_html.html_safe %>
+  
 
+    <% if current_user.present? && answer.question.user_id == current_user.id %>
+      <% if is_accepted %>
+        <%= link_to unaccept_question_answer_path(answer.question_id, answer), method: :put, class: 'btn btn-default btn-sm' do %>
+        Unaccept
+        <% end %>
+      <% else %>
+        <%= link_to accept_question_answer_path(answer.question_id, answer), method: :put, class: 'btn btn-default btn-sm' do %>
+	Accept
+        <% end %>
+      <% end %>
+    <% end %>
+      
     <%= render answer.comments %>
 
     <%= render partial: "comments/form", locals: {commentable: answer} %>
