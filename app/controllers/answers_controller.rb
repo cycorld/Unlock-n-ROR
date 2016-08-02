@@ -9,8 +9,9 @@ class AnswersController < ApplicationController
     @answer.question_id = params[:question_id]
     @answer.user_id = current_user.id
 
+    @question = @answer.question
     if @answer.save
-    
+      UserMailer.answer_notification(@question, @question.user) # if Rails.env.production?
     else
 
     end

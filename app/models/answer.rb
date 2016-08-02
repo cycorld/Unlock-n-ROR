@@ -1,5 +1,4 @@
 class Answer < ApplicationRecord
-  after_create :notify_user
   after_create :mark_score_for_answer
   
   acts_as_votable
@@ -31,9 +30,6 @@ class Answer < ApplicationRecord
   end
 
   private
-    def notify_user
-      UserMailer.answer_notification(self, ) if Rails.env.production?
-    end
 
     def mark_score_for_answer
       @score = Score.new(user_id: user_id, scorable_type: self.class.name, scorable_id: id)
