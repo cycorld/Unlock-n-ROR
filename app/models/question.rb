@@ -1,4 +1,6 @@
-class Question < ApplicationRecord 
+class Question < ApplicationRecord
+  after_create :notify_slack
+  
   acts_as_votable
   acts_as_taggable_on :tags
     
@@ -27,5 +29,17 @@ class Question < ApplicationRecord
   def is_favorited_by(user)
     @favorite = Favorite.find_by(user_id: user.id, question_id: id) unless user.nil?
     !@favorite.nil?
+  end
+
+  def notify_slack
+    uri = URI.parse('https://hooks.slack.com/services/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')
+    
+    slack_params = {
+        text: "#{title} <http://unlock-n-ror.herokuapp.com/questions/#{id}|Click Here>",
+        channel: "#bot-test",
+        username: "unlock-n-ror"
+    }.to_json
+   
+    Net::HTTP.post_form uri, {"payload" => slack_params}
   end
 end
