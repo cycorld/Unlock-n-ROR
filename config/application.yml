@@ -4,6 +4,7 @@ FACEBOOK_APP_ID: "1754152694873810"
 FACEBOOK_APP_SECRET: "d8d995f689b1468c30b4ee9165530c5d"
 TWITTER_API_KEY: "fwpq96M2ge084a3dUlcGs1fMR"
 TWITTER_API_SECRET: "4Kq9zFWznCO7BenByyaPXa7tWvqvBWyeFx4oXXjYExwMhjy3QO"
+
 mail_url_development: "localhost:3000"
 mail_url_production: "malkoring.net"
 

@@ -35,7 +35,7 @@ class Question < ApplicationRecord
     uri = URI.parse('https://hooks.slack.com/services/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')
     
     slack_params = {
-        text: "#{title} <http://unlock-n-ror.herokuapp.com/questions/#{id}|Click Here>",
+        text: "#{title} by *#{user.name}* <http://unlock-n-ror.herokuapp.com/questions/#{id}|Click Here>",
         channel: "#bot-test",
         username: "unlock-n-ror"
     }.to_json
