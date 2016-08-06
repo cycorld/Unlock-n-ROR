@@ -3,10 +3,19 @@
     <% if is_accepted = answer.id == @accepted_id %>
       <p>Accepted!</p>
     <% end %>
-  
-    <%= Markdown.new(answer.content).to_html.html_safe %>
-  
 
+    <h4><%= answer.user.name %></h4> 
+    <%= Markdown.new(answer.content).to_html.html_safe %>
+    
+    <div>
+      <% if !current_user.nil? && answer.user_id == current_user.id && !answer.nil?  %>
+      <%= link_to "edit", edit_question_answer_path(answer.question_id, answer.id) %>
+      <%= link_to "delete", "/questions/#{answer.question_id}/answers/#{answer.id}", :method => :delete %>
+      <% else %>
+      <%= link_to "Report", "#" %>
+      <% end %>
+    </div>
+   
     <% if current_user.present? && answer.question.user_id == current_user.id %>
       <% if is_accepted %>
         <%= link_to unaccept_question_answer_path(answer.question_id, answer), method: :put, class: 'btn btn-default btn-sm' do %>
@@ -18,14 +27,7 @@
         <% end %>
       <% end %>
     <% end %>
-      
-    <%= render answer.comments %>
-
-    <%= render partial: "comments/form", locals: {commentable: answer} %>
-      
-    <!--
-    <%= link_to "Add comment", new_answer_comment_path(answer.question, answer) unless current_user.nil? %>
-    -->
+    
     <%=link_to like_question_answer_path(answer.question_id, answer), method: :put, class: 'btn btn-default btn-sm' do %>
       <span class="glyphicon glyphicon-chevron-up"></span>
       like <%= answer.get_upvotes.size%></td>
@@ -34,13 +36,13 @@
       <span class="glyphicon glyphicon-chevron-down"></span>
       dislike <%= answer.get_downvotes.size%></td>
     <% end %>
-    <div>
-      <% if !current_user.nil? && answer.user_id == current_user.id && !answer.nil?  %>
-        <%= link_to "edit", edit_question_answer_path(answer.question_id, answer.id) %>
-        <%= link_to "delete", "/questions/#{answer.question_id}/answers/#{answer.id}", :method => :delete %>
-      <% else %>
-        <%= link_to "Report", "#" %>
-      <% end %>
-    </div>
+    <br>
+    <br>
+    <blockquote>
+      <%= render answer.comments %>
+    </blockquote>
+
+    <%= render partial: "comments/form", locals: {commentable: answer} %>
+    
   <% end %>
 </div>

@@ -1,5 +1,5 @@
-<div>
+<div class="markdown-comment">
 <span>
-  <%= Markdown.new(comment.content).to_html.html_safe %> - <%= User.find(comment.user_id).name %>
+  <%= Markdown.new(comment.content).to_html.html_safe %> - <%= comment.user.name %>
 </span>
 </div>

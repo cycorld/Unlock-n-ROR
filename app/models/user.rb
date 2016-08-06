@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :scores
   
   acts_as_voter
+  acts_as_tagger
 
   validates_presence_of   :email, if: :email_required?
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?

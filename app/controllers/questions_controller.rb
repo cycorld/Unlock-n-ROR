@@ -14,7 +14,8 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
-
+    current_user.tag(@question, with: params[:question][:tag_list], on: :tags)
+    
     if @question.save
       redirect_to @question
     else
@@ -37,6 +38,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    current_user.tag(@question, with: params[:question][:tag_list], on: :tags)
     if @question.update(question_params)
       redirect_to @question
     else
@@ -76,7 +78,7 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:title, :content, :tag_list)
+      params.require(:question).permit(:title, :content)
     end
 
     def verify_user

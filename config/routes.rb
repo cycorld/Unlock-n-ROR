@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :questions, only: [:new, :create, :edit, :update, :destroy]
   end
+
+  get '/tags/', to: 'tags#index'
+  get '/tags/:tag_name', to: 'tags#show'
   
+  resources :tags, only: [:index, :show]
   resources :questions, only: [:index, :show] do
     resources :comments
     member do

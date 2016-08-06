@@ -4,6 +4,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @url = "http://unlock-n-ror.herokuapp.com/question/" + @question.id
     mail(to: @user.email, subject: "Someone answered to your question!")
+    puts "Sending mail"
   end
 
   def comment_notification(commentable, user)

@@ -1,0 +1,5 @@
+<h1>Questions Tagged with <%= @taggings.first.tag.name %></h1>
+
+<% @taggings.map(&:taggable).each do |q| %>
+  <%= render q %>
+<% end %>
