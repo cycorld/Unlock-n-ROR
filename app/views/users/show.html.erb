@@ -8,7 +8,8 @@
   <% %w(Acceptation Answer).each do |t| %>
   <span><%= smooth_expr[t] + ": "%><%= @user.scores.select {|x| x.scorable_type == t }.count %></span><br>
   <% end %>
-  
+
+  <div class="col-md-12">
     <div class="col-md-6 user-container">
       <h4>My Favorites</h4>
 
@@ -28,6 +29,10 @@
       </div>
       <% end %>
     </div>
+  </div>
+  <br>
+  <br>
 
+  
 
 </div>
