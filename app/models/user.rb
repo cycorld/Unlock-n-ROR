@@ -35,7 +35,7 @@ class User < ApplicationRecord
     true
   end
 
-  def passworkd_required?
+  def password_required?
     true
   end
   
