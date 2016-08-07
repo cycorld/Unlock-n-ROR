@@ -31,6 +31,10 @@ class User < ApplicationRecord
   validates_confirmation_of :password, if: :password_required?
   validates_length_of       :password, within: Devise.password_length, allow_blank: true
 
+  def email_required?
+    true
+  end
+
   def accepted_answers
     scores.select {|x| x.scorable_type == "Acceptation" }.map do |y|
       {
