@@ -8,6 +8,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 
+gem 'domp'
+
 # Gem for manage environment variables
 gem 'figaro'
 
