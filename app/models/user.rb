@@ -34,6 +34,10 @@ class User < ApplicationRecord
   def email_required?
     true
   end
+
+  def passworkd_required?
+    true
+  end
   
   def accepted_answers
     scores.select {|x| x.scorable_type == "Acceptation" }.map do |y|
