@@ -11,7 +11,7 @@ class AnswersController < ApplicationController
 
     @question = @answer.question
     if @answer.save
-      UserMailer.answer_notification(@question, @question.user).delivery if Rails.env.production?
+      UserMailer.answer_notification(@question, @question.user).deliver if Rails.env.production?
     else
 
     end
