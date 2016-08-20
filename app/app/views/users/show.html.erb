@@ -1,0 +1,38 @@
+<div id="user_introduce">
+
+  <b><%= @user.email %></b>
+
+  <h4><%= @user.name %></h4>
+  <h4>My reputation</h4>
+
+  <% %w(Acceptation Answer).each do |t| %>
+  <span><%= smooth_expr[t] + ": "%><%= @user.scores.select {|x| x.scorable_type == t }.count %></span><br>
+  <% end %>
+
+  <div class="col-md-12">
+    <div class="col-md-6 user-container">
+      <h4>My Favorites</h4>
+
+      <ul>
+	<% @favorites.each do |f| %>
+	<li><%= link_to f.question.title, f.question %></li>
+	<% end %>  
+      </ul>
+    </div>
+
+    <div class="col-md-6 user-container">
+      <h4>Accepted answers</h4>
+      <% @user.accepted_answers.each do |a| %>
+      <div>
+	<b><%= link_to a[:question].title, a[:question] %></b><br>
+	<small><%= truncate a[:content], length: 30 %></small>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  
+
+</div>

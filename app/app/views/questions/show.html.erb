@@ -1,0 +1,46 @@
+<h1 style="display:inline"><%= @question.title %></h1>&nbsp;&nbsp;by <b><%= @question.user.name %></b>
+&nbsp;&nbsp;&nbsp;
+<% unless @question.is_favorited_by current_user %>
+<%= link_to favorite_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+<span class="glyphicon glyphicon-star-empty"></span>&nbsp;favorite
+<% end %>
+<% else %>
+<%= link_to unfavorite_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+<span class="glyphicon glyphicon-star"></span>&nbsp;unfavorite
+<% end %>
+<% end %>
+
+<p><%= Markdown.new(@question.content).to_html.html_safe %></p>
+<i>Tags: </i>
+<% @question.tags.map(&:name).each do |t| %>
+<tag><%= link_to t, "tags/#{t}" %></tag>
+<% end %>
+<div>
+  <% if !current_user.nil? && current_user.id == @question.user_id %>
+  <%= link_to "edit", edit_question_path(@question) %>
+  <%= link_to "delete", "/questions/#{@question.id}", :method => :delete %>
+  <% end %>
+  </div>
+
+<%=link_to like_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+<span class="glyphicon glyphicon-chevron-up"></span>
+like <%=@question.get_upvotes.size%></td>
+<% end %>
+<%=link_to dislike_question_path(@question), method: :put, class: 'btn btn-default btn-sm' do %>
+<span class="glyphicon glyphicon-chevron-down"></span>
+dislike <%=@question.get_downvotes.size%></td>
+<% end %>
+<br><br>
+<blockquote>
+<%= render @question.comments, locals: {accepted_id: @accepted_id} %>
+</blockquote>
+<%= render partial: "comments/form", locals: {commentable: @question} %>
+<h3> Write your Answer</h3>
+<br>
+<%= render "answers/form" unless current_user.nil? %>
+
+<%= render @question.answers %>
+
+
+<%= link_to "back", '/questions', class: "btn btn-default" %>
+ 

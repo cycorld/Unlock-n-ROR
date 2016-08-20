@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@mixin box_sizing {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* header */
+#logo {
+    float: left;
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    height: 2em;
+}
+
+.container {
+    .dropdown {
+	display: inline;
+    }
+}
+
+/* body */
+body {
+     padding-top: 60px;
+}
+
+hr {
+    width: 100%;
+    border: 1px solid #DDD;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    
+    display: block;
+}
+
+form {
+    width: 80%;
+    margin: auto;
+}
+
+textarea,
+input[name="question[content]"],
+input[name="question[title]"],
+input[name="question[tag_list]"] {
+    width: 100%;
+}
+
+/* footer */
+
+footer {
+    margin-top: 45px;
+    padding-top: 5px;
+
+    border-top: 1px solid #eaeaea;
+    
+    a {
+	padding-right: 10px;
+    }
+    
+    .category, #copyright {
+	padding-top: 5px;
+	text-align: center;
+	span {
+	    margin-top: 10px;
+	}
+    }
+
+    
+    li {
+	text-align: left;
+	display: block;
+    }
+	
+}
+
+.debug_dump {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 45px;
+    @include box_sizing;;
+}
+
+
+/* messages */
+#messages {
+    max-height: 450px;
+    overflow-y: auto;
+}

@@ -1,0 +1,47 @@
+// Place all the styles related to the questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+tag {
+    display: inline-block;
+    line-height: 1em;
+
+    font-size: 0.8em;
+    background-color: #000;
+    color: #fff;
+    border-radius: 2px;
+
+    padding: 2px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.question {
+
+    border: 2px solid #777;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 60px;
+    z-index: 0;
+    
+    .content {
+	z-index: 5;
+    }
+
+    .info {
+	float: left;
+    }
+ 
+
+    .question_status {
+	display: inline;
+	line-height: 40px;
+	float: right;
+	text-align: right;
+	margin-left: auto;
+	
+    }
+    
+}

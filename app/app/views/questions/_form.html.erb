@@ -1,0 +1,22 @@
+<script>
+  var simplemde = new SimpleMDE({element: $('textarea')[0] }); 
+</script>
+<%= form_for(@question) do |f| %>
+  <div class="field">
+    <%= f.text_field :title, placeholder: "제목을 입력해주세요" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.text_area :content %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.text_field :tag_list, placeholder: "태그들을 콤마(,)로 구분하여 입력해주세요" %>
+  </div>
+
+  <br>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

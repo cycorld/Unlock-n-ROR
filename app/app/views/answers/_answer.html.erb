@@ -1,0 +1,48 @@
+<div>
+  <% unless answer.content.blank? %>
+    <% if is_accepted = answer.id == @accepted_id %>
+      <p>Accepted!</p>
+    <% end %>
+
+    <h4><%= answer.user.name %></h4> 
+    <%= Markdown.new(answer.content).to_html.html_safe %>
+    
+    <div>
+      <% if !current_user.nil? && answer.user_id == current_user.id && !answer.nil?  %>
+      <%= link_to "edit", edit_question_answer_path(answer.question_id, answer.id) %>
+      <%= link_to "delete", "/questions/#{answer.question_id}/answers/#{answer.id}", :method => :delete %>
+      <% else %>
+      <%= link_to "Report", "#" %>
+      <% end %>
+    </div>
+   
+    <% if current_user.present? && answer.question.user_id == current_user.id %>
+      <% if is_accepted %>
+        <%= link_to unaccept_question_answer_path(answer.question_id, answer), method: :put, class: 'btn btn-default btn-sm' do %>
+        Unaccept
+        <% end %>
+      <% else %>
+        <%= link_to accept_question_answer_path(answer.question_id, answer), method: :put, class: 'btn btn-default btn-sm' do %>
+	Accept
+        <% end %>
+      <% end %>
+    <% end %>
+    
+    <%=link_to like_question_answer_path(answer.question_id, answer), method: :put, class: 'btn btn-default btn-sm' do %>
+      <span class="glyphicon glyphicon-chevron-up"></span>
+      like <%= answer.get_upvotes.size%></td>
+    <% end %>
+    <%=link_to dislike_question_answer_path(answer.question_id, answer), method: :put, class: 'btn btn-default btn-sm' do %>
+      <span class="glyphicon glyphicon-chevron-down"></span>
+      dislike <%= answer.get_downvotes.size%></td>
+    <% end %>
+    <br>
+    <br>
+    <blockquote>
+      <%= render answer.comments %>
+    </blockquote>
+
+    <%= render partial: "comments/form", locals: {commentable: answer} %>
+    
+  <% end %>
+</div>
