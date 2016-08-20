@@ -1,6 +1,8 @@
 class TagsController < ApplicationController
   def index
-    @tags = ActsAsTaggableOn::Tag.all 
+    @tags = params[:search].present? ?
+              ActsAsTaggableOn::Tag.all :
+              ActsAsTaggableOn::Tag.where("name like ?", "%#{params[:search]}%")
   end
 
   def show

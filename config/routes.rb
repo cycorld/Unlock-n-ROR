@@ -17,8 +17,9 @@ Rails.application.routes.draw do
     resources :questions, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  get '/tags/', to: 'tags#index'
   get '/tags/:tag_name', to: 'tags#show'
+  get '/search', to: 'search#index' 
+  post '/search', to: 'search#search'
   
   resources :tags, only: [:index, :show]
   resources :questions, only: [:index, :show] do

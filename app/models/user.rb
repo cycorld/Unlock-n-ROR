@@ -35,6 +35,10 @@ class User < ApplicationRecord
     true
   end
 
+  def password_required?
+    true
+  end
+
   def accepted_answers
     scores.select {|x| x.scorable_type == "Acceptation" }.map do |y|
       {
