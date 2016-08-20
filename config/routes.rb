@@ -2,11 +2,12 @@ Rails.application.routes.draw do
 
 
   get 'comments/create'
-
   get 'comments/update'
-
   get 'comments/destroy'
 
+  resources :chatrooms, only: [:new, :create, :show, :index]
+  mount ActionCable.server => '/cable'
+  
   # Default static pages for giving information
   get '/about', to: 'static_pages#about'
   get '/help',  to: 'static_pages#help'
@@ -15,7 +16,12 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :questions, only: [:new, :create, :edit, :update, :destroy]
   end
+
+  get '/tags/:tag_name', to: 'tags#show'
+  get '/search', to: 'search#index' 
+  post '/search', to: 'search#search'
   
+  resources :tags, only: [:index, :show]
   resources :questions, only: [:index, :show] do
     resources :comments
     member do
@@ -28,6 +34,8 @@ Rails.application.routes.draw do
       member do
         put "like", to: "answers#upvote"
         put "dislike", to: "answers#downvote"
+        put "accept", to: "answers#accept"
+        put "unaccept", to: "answers#unaccept"
       end
     end
   end

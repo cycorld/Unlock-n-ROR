@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723182808) do
+ActiveRecord::Schema.define(version: 20160808015634) do
+
+  create_table "acceptations", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["answer_id"], name: "index_acceptations_on_answer_id"
+    t.index ["question_id"], name: "index_acceptations_on_question_id"
+  end
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -21,6 +30,22 @@ ActiveRecord::Schema.define(version: 20160723182808) do
     t.datetime "updated_at",  null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "authentication_providers", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_name_on_authentication_providers"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -43,21 +68,14 @@ ActiveRecord::Schema.define(version: 20160723182808) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "identities", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "provider"
-    t.string   "accesstoken"
-    t.string   "refreshtoken"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "email"
-    t.string   "nickname"
-    t.string   "image"
-    t.string   "phone"
-    t.string   "urls"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["user_id"], name: "index_identities_on_user_id"
+    t.integer  "chatroom_id"
+    t.string   "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -67,6 +85,16 @@ ActiveRecord::Schema.define(version: 20160723182808) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "scorable_type"
+    t.integer  "scorable_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["scorable_type", "scorable_id"], name: "index_scores_on_scorable_type_and_scorable_id"
+    t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -85,6 +113,19 @@ ActiveRecord::Schema.define(version: 20160723182808) do
     t.string  "name"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "user_authentications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "authentication_provider_id"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "token_expires_at"
+    t.text     "params"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["authentication_provider_id"], name: "index_user_authentications_on_authentication_provider_id"
+    t.index ["user_id"], name: "index_user_authentications_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

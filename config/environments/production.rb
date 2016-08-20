@@ -35,9 +35,8 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Action Cable endpoint configuration
-  # config.action_cable.url = 'wss://example.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
-
+  config.action_cable.url = 'wss://unlock-n-ror.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = ['https://unlock-n-ror.herokuapp.com', 'http://unlock-n-ror.herokuapp.com']
   # Don't mount Action Cable in the main server process.
   # config.action_cable.mount_path = nil
 
@@ -59,6 +58,16 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "unlock-n-ror_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => 'unlock-n-ror.herokuapp.com',
+    :authentication => :plain,
+  }
+  
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

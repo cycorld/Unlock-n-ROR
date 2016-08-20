@@ -1,5 +1,6 @@
-<h1>Recent questions</h1>
-
+<h1 style="display: inline">Recent questions</h1>&nbsp;&nbsp;<i><%= link_to "Search for Tags", '/search/' %></i>
+<br>
+<br>
 <div id="questions">
 <%= render :partial => "question", :collection => @questions, :spacer_template => "spacer" %>
 </div>

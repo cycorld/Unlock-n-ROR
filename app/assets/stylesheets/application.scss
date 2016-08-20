@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_tree
  */
 
 @import "bootstrap-sprockets";
@@ -30,6 +31,12 @@
     height: 2em;
 }
 
+.container {
+    .dropdown {
+	display: inline;
+    }
+}
+
 /* body */
 body {
      padding-top: 60px;
@@ -38,7 +45,8 @@ body {
 hr {
     width: 100%;
     border: 1px solid #DDD;
-    margin: 0px;
+    margin-top: 2px;
+    margin-bottom: 2px;
     
     display: block;
 }
@@ -46,15 +54,6 @@ hr {
 form {
     width: 80%;
     margin: auto;
-}
-
-#questions > div {
-    height: 30px;
-}
-
-.question > div {
-    display: flex;
-    align-items: center;
 }
 
 textarea,
@@ -69,8 +68,9 @@ input[name="question[tag_list]"] {
 footer {
     margin-top: 45px;
     padding-top: 5px;
-    border-top: 1px solid #eaeaea;
 
+    border-top: 1px solid #eaeaea;
+    
     a {
 	padding-right: 10px;
     }
@@ -97,4 +97,11 @@ footer {
     width: 100%;
     margin-top: 45px;
     @include box_sizing;;
+}
+
+
+/* messages */
+#messages {
+    max-height: 450px;
+    overflow-y: auto;
 }
