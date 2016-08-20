@@ -1,0 +1,12 @@
+<h1>Tag lists</h1>
+
+<table>
+<td>Tag name</td><td>First Tagger name</td><td>Tagging count
+<% @tags.each do |tag| %>
+<tr>
+  <td><b><%= link_to tag.name, "/tags/#{tag.name}" %></b></td>
+  <td><%= tag.taggings.present? && tag.taggings.first.tagger.present? ? tag.taggings.first.tagger.name : "Unknown" %></td>
+  <td><%= tag.taggings_count %></td>
+</tr>
+<% end %>
+</table>
