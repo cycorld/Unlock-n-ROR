@@ -26,3 +26,21 @@
     }
   }
 }
+.question-header {
+  overflow: hidden;
+  .favorite-btn {
+    float: right;
+  }
+}
+
+.question-content {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px dotted #222;
+  overflow: hidden;
+}
+
+.like-btns {
+  width: 300px;
+  margin: 20px auto;
+}

@@ -1,7 +1,5 @@
-<script>
-  var simplemde = new SimpleMDE({element: $('textarea')[0] }); 
-</script>
 <%= form_for(@question) do |f| %>
+  <h1>New Question</h1>
   <div class="field">
     <%= f.text_field :title, placeholder: "제목을 입력해주세요" %>
   </div>
@@ -13,10 +11,8 @@
   <div class="field">
     <%= f.text_field :tag_list, placeholder: "태그들을 콤마(,)로 구분하여 입력해주세요" %>
   </div>
-
   <br>
-  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>

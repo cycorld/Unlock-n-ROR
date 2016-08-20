@@ -28,6 +28,12 @@
       js.src = "//connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+    $('textarea').each(function() {
+      var simplemde = new SimpleMDE({
+        element: this,
+      });
+      simplemde.render();
+    });
     </script>
     <div class="container">
       <%= yield %>
