@@ -1,25 +1,24 @@
-<div class="question">
-    
-  <div class="col-md-12 content">
-    <div class="info">
-      <%= link_to question.title, question %> by <b><%= question.user.name %></b>
-      <br>
-      <i>Tags:</i> 
-      <% question.tags.map(&:name).each do |t| %>
-        <tag><%= link_to t, "/tags/#{t}" %></tag>
-	<% end %>
+<%= link_to question do %>
+<div class="question panel panel-default">
+  <div class="question_status">
+    <div class="thumb-btn">
+      <span class="glyphicon glyphicon-thumbs-up" aria-label="voted_for" aria-hidden="true"></span>
+      <b><%= question.get_upvotes.size - question.get_downvotes.size %></b>
     </div>
-    
-      <div class="question_status">
-	<i class="fa fa-thumbs-up" aria-label="voted_for" aria-hidden="true"></i>
-	&nbsp;
-        <b><%= question.get_upvotes.size - question.get_downvotes.size %></b>
-	&nbsp;&nbsp;&nbsp;
-        <i class="fa fa-comments" aria-label="answers" aria-hidden="true"></i>
-        &nbsp;
-        <b><%= question.answers.count %></b>
-      </div>
-    
+    <div class="thumb-btn">
+      <span class="glyphicon glyphicon-thumbs-down" aria-label="answers" aria-hidden="true"></span>
+      <b><%= question.answers.count %></b>
     </div>
-    
+  </div>
+  <div class="info">
+    <%= question.title %> by <b><%= question.user.name %></b>
+    <br>
+    <i>Tags:</i>
+    <% question.tags.map(&:name).each do |t| %>
+      <%= link_to "/tags/#{t}" do %>
+        <tag class="badge"><%=t%></tag>
+      <% end %>
+    <% end %>
+  </div>
 </div>
+<% end %>

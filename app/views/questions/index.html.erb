@@ -1,7 +1,6 @@
-<h1 style="display: inline">Recent questions</h1>&nbsp;&nbsp;<i><%= link_to "Search for Tags", '/search/' %></i>
-<br>
-<br>
+<h1>Recent Questions</h1>
+<%= link_to "Search for Tags", '/search/' %>
 <div id="questions">
-<%= render :partial => "question", :collection => @questions, :spacer_template => "spacer" %>
+<%= render :partial => "question", :collection => @questions %>
 </div>
-<%= link_to "new question", new_question_path %>
+<%= link_to "new question", new_question_path, class: 'btn btn-primary btn-lg' %>
